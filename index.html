@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript_DOM</title>
+    <style>
+      #container {
+        width: 400px;
+        height: 400px;
+        position: relative;
+        background: rgb(32, 145, 4);
+      }
+      #animate {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        background-color: rgb(57, 26, 236);
+      }
+    </style>
+  </head>
+  <body>
+    <p><button onclick="myMove()">Click Me</button></p>
+
+    <div id="container">
+      <div id="animate"></div>
+    </div>
+    <p>
+      With the HTML DOM, JavaScript can access and change all the elements of an
+      HTML document. DOM - Document Object Model
+    </p>
+    <pre>
+      In the object model, JavaScript gets all the power it needs to create dynamic HTML:
+
+        JavaScript can change all the HTML elements in the page
+        JavaScript can change all the HTML attributes in the page
+        JavaScript can change all the CSS styles in the page
+        JavaScript can remove existing HTML elements and attributes
+        JavaScript can add new HTML elements and attributes
+        JavaScript can react to all existing HTML events in the page
+        JavaScript can create new HTML events in the page
+        
+    </pre>
+    <ul>
+      <li>Core DOM - standard model for all document types</li>
+      <li>XML DOM - standard model for XML documents</li>
+      <li>HTML DOM - standard model for HTML documents</li>
+    </ul>
+    <h1>JavaScript HTML DOM</h1>
+
+    <div id="main">
+      <p>Finding HTML Elements by Tag Name</p>
+      <p>This example demonstrates the <b>getElementsByTagName</b> method.</p>
+    </div>
+
+    <p id="demo"></p>
+
+    <script>
+      const x = document.getElementById("main");
+      const y = x.getElementsByTagName("p");
+
+      document.getElementById("demo").innerHTML =
+        'The first paragraph (index 0) inside "main" is: ' + y[0].innerHTML;
+    </script>
+    <h2>JavaScript HTML DOM</h2>
+    <p>Finding HTML Elements Using <b>document.forms</b>.</p>
+
+    <form id="frm1" action=" ">
+      First name: <input type="text" name="fname" value="Donald" /><br />
+      Last name: <input type="text" name="lname" value="Duck" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <p>These are the values of each element in the form:</p>
+
+    <p id="demo1"></p>
+
+    <script>
+      const x1 = document.forms["frm1"];
+      let text = "";
+      for (let i = 0; i < x1.length; i++) {
+        text += x1.elements[i].value + "<br>";
+      }
+      document.getElementById("demo").innerHTML = text;
+    </script>
+    <h2>JavaScript can Change HTML</h2>
+
+    <p id="p1">Hello World!</p>
+
+    <script>
+      document.getElementById("p1").innerHTML = "New text!";
+    </script>
+
+    <p>The paragraph above was changed by a script.</p>
+
+    <p id="sty">My Heading for color change</p>
+
+    <button
+      type="button"
+      onclick="document.getElementById('sty').style.color='blue'"
+    >
+      Click Me!
+    </button>
+    <h2>The onclick Attribute</h2>
+
+    <h2 onclick="changeText(this)">Click on this text!</h2>
+
+    <script>
+      function changeText(id) {
+        id.innerHTML = "Ooops!";
+      }
+    </script>
+    Enter your name: <input type="text" id="fname" oninput="upperCase()">
+    <p>When you write in the input field, a function is triggered to transform the input to upper case.</p>
+    
+    <script>
+    function upperCase() {
+      const x = document.getElementById("fname");
+      x.value = x.value.toUpperCase();
+    }
+    </script>
+    
+    <h2>JavaScript addEventListener()</h2>
+
+    <p>This example uses the addEventListener() method to attach a click event to a button.</p>
+    
+    <button id="myBtn">Try it</button>
+    
+    <script>
+    document.getElementById("myBtn").addEventListener("click",function() {
+      alert("Hello World!");
+      
+    });
+    </script>
+    <p>Navigation in DOM</p>
+    <pre>
+      Navigating Between Nodes
+You can use the following node properties to navigate between nodes with JavaScript:
+
+parentNode
+childNodes[nodenumber]
+firstChild
+lastChild
+nextSibling
+previousSibling
+
+    </pre>
+    <p>
+      The nodeName Property
+The nodeName property specifies the name of a node.
+
+nodeName is read-only
+nodeName of an element node is the same as the tag name
+nodeName of an attribute node is the attribute name
+nodeName of a text node is always #text
+nodeName of the document node is always #document
+
+    </p>
+    <h3>Replace an HTML Element.</h3>
+
+<div id="div1">
+<p id="p1">This is a paragraph.</p>
+<p id="p2">This is a paragraph.</p>
+</div>
+
+<script>
+const parent = document.getElementById("div1");
+const child = document.getElementById("p1");
+const para = document.createElement("p");
+const node = document.createTextNode("This is new.");
+para.appendChild(node);
+parent.replaceChild(para,child);
+</script>
+
+<h4>Hello World!</h4>
+
+<h4>Hello Norway!</h4>
+
+<p id="demo2"></p>
+
+<script>
+const myCollections = document.getElementsByTagName("h4");
+
+document.getElementById("demo2").innerHTML = "The innerHTML of the second paragraph is: " + myCollections[1].innerHTML;
+
+</script>
+
+    <script src="index.js"></script>
+  </body>
+</html>
