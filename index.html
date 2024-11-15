@@ -157,19 +157,19 @@ nodeName of the document node is always #document
 
     </p>
     <h3>Replace an HTML Element.</h3>
-
-<div id="div1">
-<p id="p1">This is a paragraph.</p>
-<p id="p2">This is a paragraph.</p>
-</div>
-
-<script>
-const parent = document.getElementById("div1");
-const child = document.getElementById("p1");
-const para = document.createElement("p");
-const node = document.createTextNode("This is new.");
-para.appendChild(node);
-parent.replaceChild(para,child);
+    <div id="div1">
+      <p id="p1">This is a paragraph.</p>
+      <p id="p2">This is another paragraph.</p>
+      </div>
+      
+      <script>
+      const para = document.createElement("p");
+      const node = document.createTextNode("This is new.");
+      para.appendChild(node);
+      const element = document.getElementById("div1");
+      element.appendChild(para);
+      </script>
+      
 </script>
 
 <h4>Hello World!</h4>
